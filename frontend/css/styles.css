@@ -1,0 +1,280 @@
+/* ==========================================================================
+   PRODUCTION CORE DESIGN SYSTEM & CSS GRID MATRIX
+   ========================================================================== */
+
+:root {
+    --bg-primary: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-element: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border-color: #475569;
+    --border-radius: 8px;
+    --sidebar-width: 260px;
+    --settings-width: 320px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* --- MACRO REPOSITORY LAYOUT GRID --- */
+.app-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr var(--settings-width);
+    grid-template-rows: 100vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* --- SIDEBAR RAIL COMPONENT --- */
+.sidebar-wrapper {
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
+.sidebar-menu h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.menu-group {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.menu-item, .sub-menu-item {
+    padding: 10px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    color: var(--text-main);
+}
+
+.menu-item:hover, .sub-menu-item:hover {
+    background-color: var(--bg-element);
+}
+
+.menu-item.active, .sub-menu-item.active {
+    background-color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* --- CENTER WORKSPACE COMPONENT --- */
+.main-content {
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.guest {
+    background-color: #eab30822;
+    color: #eab308;
+    border: 1px solid #eab30844;
+}
+
+.workspace-wrapper {
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.workspace-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.workspace-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #131c2e;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 16px 24px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background-color: var(--bg-surface);
+}
+
+.tab-btn.active {
+    color: var(--text-main);
+    background-color: var(--bg-surface);
+    border-bottom: 2px solid var(--accent-color);
+    font-weight: 600;
+}
+
+.workspace-body {
+    padding: 24px;
+}
+
+.active-format-banner {
+    background-color: var(--bg-element);
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    font-size: 0.85rem;
+}
+
+/* --- FORMS & UX ELEMENTS --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+input[type="text"], textarea {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 12px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.primary-btn {
+    background-color: var(--accent-color);
+    color: var(--text-main);
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+/* --- DRAG & DROP FILE ZONE --- */
+.file-upload-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: border-color 0.2s ease;
+}
+
+.file-upload-zone:hover {
+    border-color: var(--accent-color);
+}
+
+.browse-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* --- SETTINGS RIGHT-SIDE RAIL --- */
+.settings-wrapper {
+    background-color: var(--bg-surface);
+    border-left: 1px solid var(--border-color);
+    padding: 24px 20px;
+    overflow-y: auto;
+}
+
+.settings-card h3 {
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.settings-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.settings-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.settings-preview-banner {
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
